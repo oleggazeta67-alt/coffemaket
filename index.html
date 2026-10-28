@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Пенка — кофейня</title>
+<link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Playfair+Display:ital,wght@0,600;0,800;1,600&family=Nunito:wght@400;600;800&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#fff7f1;--card:#ffffff;--ink:#4a3540;--muted:#8a7480;--peach:#ffd9c7;--mint:#cdeee0;--lav:#ddd3f5;--butter:#fff1b8;--pink:#ffc9dc;--accent:#e98aa6;--accent-ink:#4a3540;--shadow:0 12px 30px rgba(180,120,140,.18);
+color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#241a21;--card:#33252e;--ink:#fbe9ef;--muted:#c3a8b3;--peach:#5a3a3a;--mint:#2f4a43;--lav:#41375c;--butter:#5a5030;--pink:#5e3347;--accent:#f0a0b8;--shadow:0 12px 30px rgba(0,0,0,.35);color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#241a21;--card:#33252e;--ink:#fbe9ef;--muted:#c3a8b3;--peach:#5a3a3a;--mint:#2f4a43;--lav:#41375c;--butter:#5a5030;--pink:#5e3347;--accent:#f0a0b8;--shadow:0 12px 30px rgba(0,0,0,.35);color-scheme:dark}
+*{box-sizing:border-box}html{scroll-behavior:smooth;scroll-padding-top:76px}
+body{margin:0;background:var(--bg);color:var(--ink);font:17px/1.65 Nunito,"Segoe UI",sans-serif;overflow-x:hidden;transition:background .4s,color .4s}
+h1,h2,h3{font-family:"Playfair Display",Georgia,serif;margin:0;line-height:1.1}
+.script{font-family:Pacifico,cursive;font-weight:400}
+.wrap{max-width:1100px;margin:0 auto;padding:0 22px}
+#promo{background:linear-gradient(90deg,var(--pink),var(--butter),var(--mint),var(--lav));background-size:300% 100%;animation:slide 12s linear infinite alternate;color:#4a3540;text-align:center;padding:9px 44px 9px 16px;font-weight:600;font-size:15px;position:relative}
+#promo button{position:absolute;right:10px;top:50%;transform:translateY(-50%);background:none;border:0;font-size:22px;cursor:pointer;color:inherit}
+@keyframes slide{to{background-position:100% 0}}
+header{position:sticky;top:0;z-index:20;background:color-mix(in srgb,var(--bg) 85%,transparent);backdrop-filter:blur(10px)}
+header .wrap{display:flex;align-items:center;gap:18px;height:64px}
+.logo{font:400 28px Pacifico,cursive;text-decoration:none;color:var(--accent);margin-right:auto}
+nav{display:flex;gap:20px;font-weight:600;font-size:15px}
+nav a{text-decoration:none;position:relative}
+nav a::after{content:"";position:absolute;left:0;bottom:-3px;height:3px;width:0;background:var(--accent);border-radius:3px;transition:width .3s}
+nav a:hover::after{width:100%}
+@media(max-width:760px){nav{display:none}}
+.ib{border:0;background:var(--card);color:var(--ink);box-shadow:var(--shadow);width:42px;height:42px;border-radius:50%;cursor:pointer;font-size:18px;position:relative;transition:transform .2s}
+.ib:hover{transform:scale(1.1) rotate(-6deg)}
+#badge{position:absolute;top:-4px;right:-4px;background:var(--accent);color:#fff;border-radius:99px;font:800 12px Nunito;min-width:20px;height:20px;display:grid;place-items:center;transition:transform .3s}
+#badge.bump{animation:bump .4s}
+@keyframes bump{50%{transform:scale(1.6)}}
+.hero{position:relative;overflow:hidden;padding:50px 0 80px}
+.blob{position:absolute;border-radius:50%;filter:blur(8px);opacity:.75;animation:float 9s ease-in-out infinite}
+.b1{width:280px;height:280px;background:var(--peach);top:-60px;left:-70px}
+.b2{width:220px;height:220px;background:var(--lav);right:-40px;top:60px;animation-delay:-3s}
+.b3{width:160px;height:160px;background:var(--mint);bottom:10px;left:40%;animation-delay:-6s}
+@keyframes float{50%{transform:translate(18px,-26px) scale(1.06)}}
+.hero .wrap{position:relative;display:grid;grid-template-columns:1.1fr .9fr;gap:20px;align-items:center}
+@media(max-width:800px){.hero .wrap{grid-template-columns:1fr;text-align:center}.hero p{margin-inline:auto}}
+.hero h1{font-size:clamp(42px,7vw,82px);font-weight:800}
+.hero h1 .l{display:inline-block;opacity:0;transform:translateY(40px) rotate(8deg);animation:letter .7s cubic-bezier(.2,1.4,.4,1) forwards}
+.hero h1 em{font:400 .8em Pacifico,cursive;color:var(--accent)}
+@keyframes letter{to{opacity:1;transform:none}}
+.hero p{max-width:30em;color:var(--muted);margin:18px 0 26px;opacity:0;animation:fade 1s .9s forwards}
+@keyframes fade{to{opacity:1}}
+.btn{display:inline-block;background:var(--accent);color:#fff;border:0;border-radius:99px;padding:13px 28px;font:800 16px Nunito,sans-serif;cursor:pointer;text-decoration:none;box-shadow:var(--shadow);transition:transform .2s,box-shadow .2s}
+.btn:hover{transform:translateY(-3px) scale(1.03)}.btn:active{transform:scale(.97)}
+.btn.soft{background:var(--card);color:var(--ink);margin-left:8px}
+.btn:focus-visible,input:focus-visible,select:focus-visible,.tab:focus-visible,.ib:focus-visible{outline:3px solid var(--accent);outline-offset:3px}
+.cup{width:100%;max-width:380px;justify-self:center;animation:bob 5s ease-in-out infinite}
+@keyframes bob{50%{transform:translateY(-12px)}}
+.steam path{fill:none;stroke:var(--accent);stroke-width:5;stroke-linecap:round;stroke-dasharray:60 80;opacity:.7;animation:steam 3.2s ease-in-out infinite}
+.steam path:nth-child(2){animation-delay:-1s}.steam path:nth-child(3){animation-delay:-2s}
+@keyframes steam{0%{stroke-dashoffset:140;opacity:0}40%{opacity:.8}100%{stroke-dashoffset:0;opacity:0;transform:translateY(-14px)}}
+.marq{background:var(--lav);padding:14px 0;overflow:hidden;white-space:nowrap;transform:rotate(-1.2deg);margin:0 -10px}
+.marq div{display:inline-block;animation:marq 24s linear infinite;font:600 italic 22px "Playfair Display",serif}
+.marq span{margin:0 26px}
+@keyframes marq{to{transform:translateX(-50%)}}
+section{padding:80px 0 0}
+.rev{opacity:0;transform:translateY(34px);transition:opacity .8s,transform .8s cubic-bezier(.2,.8,.2,1)}
+.rev.in{opacity:1;transform:none}
+h2{font-size:clamp(32px,5vw,50px);font-weight:800;text-align:center}
+h2 + .sub{text-align:center;color:var(--muted);max-width:34em;margin:10px auto 32px}
+.tabs{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-bottom:30px}
+.tab{border:0;background:var(--card);color:var(--ink);padding:10px 22px;border-radius:99px;font:700 15px Nunito;cursor:pointer;box-shadow:var(--shadow);transition:.25s}
+.tab.on{background:var(--accent);color:#fff;transform:scale(1.08)}
+.menu{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:22px}
+.item{background:var(--card);border-radius:28px;padding:22px;box-shadow:var(--shadow);display:flex;flex-direction:column;gap:6px;animation:pop .5s backwards;transition:transform .3s}
+.item:hover{transform:translateY(-6px) rotate(-.8deg)}
+@keyframes pop{from{opacity:0;transform:scale(.88) translateY(20px)}}
+.ico{width:64px;height:64px;border-radius:22px;display:grid;place-items:center;font-size:32px;margin-bottom:6px;transition:transform .4s}
+.item:hover .ico{transform:rotate(14deg) scale(1.12)}
+.item h3{font-size:21px}.item p{margin:0;color:var(--muted);font-size:15px;line-height:1.45;flex:1}
+.row{display:flex;justify-content:space-between;align-items:center;margin-top:10px}
+.price{font:800 20px "Playfair Display",serif}
+.add{border:0;background:var(--accent);color:#fff;width:40px;height:40px;border-radius:50%;font-size:22px;cursor:pointer;transition:transform .2s}
+.add:hover{transform:rotate(90deg) scale(1.1)}
+.about{display:grid;grid-template-columns:1fr 1fr;gap:34px;align-items:center}
+@media(max-width:800px){.about{grid-template-columns:1fr}}
+.about h2{text-align:left}
+.stats{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.stat{border-radius:30px;padding:26px 18px;text-align:center}
+.stat b{display:block;font:800 44px "Playfair Display",serif}
+.stat:nth-child(1){background:var(--peach)}.stat:nth-child(2){background:var(--mint)}.stat:nth-child(3){background:var(--butter)}.stat:nth-child(4){background:var(--pink)}
+.slider{max-width:640px;margin:0 auto;background:var(--card);border-radius:36px;padding:34px;box-shadow:var(--shadow);text-align:center;min-height:210px;position:relative}
+.slider q{font:italic 600 22px/1.4 "Playfair Display",serif;display:block;transition:opacity .4s,transform .4s;quotes:"«" "»"}
+.slider .who{margin-top:14px;color:var(--muted);font-weight:600;transition:opacity .4s}
+.slider.out q,.slider.out .who{opacity:0;transform:translateY(10px)}
+.dots{display:flex;gap:8px;justify-content:center;margin-top:18px}
+.dots button{width:12px;height:12px;border-radius:50%;border:0;background:var(--lav);cursor:pointer;transition:.3s;padding:0}
+.dots button.on{background:var(--accent);width:30px;border-radius:99px}
+form{max-width:640px;margin:0 auto;background:var(--card);border-radius:36px;padding:32px;box-shadow:var(--shadow);display:grid;grid-template-columns:1fr 1fr;gap:6px 16px}
+form .full{grid-column:1/-1}
+@media(max-width:600px){form{grid-template-columns:1fr}}
+label{font-weight:700;font-size:14px;margin-top:8px;display:block}
+input,select{width:100%;padding:12px 16px;font:600 16px Nunito;border:2px solid var(--lav);border-radius:18px;background:var(--bg);color:var(--ink);transition:border-color .2s}
+input:focus,select:focus{border-color:var(--accent);outline:none}
+.err{color:#d6456b;font-weight:700;min-height:1.4em;font-size:15px}
+.thanks{display:none;background:var(--mint);border-radius:22px;padding:16px;text-align:center;font-weight:700}
+.thanks.show{display:block;animation:pop .5s}
+footer{margin-top:90px;background:var(--peach);padding:40px 0;border-radius:50px 50px 0 0}
+footer .wrap{display:flex;flex-wrap:wrap;gap:26px;justify-content:space-between}
+footer p{margin:3px 0}
+#drawer{position:fixed;top:0;right:0;bottom:0;width:min(380px,100%);background:var(--card);box-shadow:-10px 0 40px rgba(0,0,0,.2);z-index:40;transform:translateX(105%);transition:transform .45s cubic-bezier(.2,.9,.2,1);display:flex;flex-direction:column;padding:24px;padding-top:calc(24px + env(safe-area-inset-top,0px))}
+#drawer.open{transform:none}
+#veil{position:fixed;inset:0;background:rgba(74,53,64,.35);z-index:30;opacity:0;pointer-events:none;transition:opacity .4s}
+#veil.open{opacity:1;pointer-events:auto}
+#list{flex:1;overflow:auto;margin:14px 0}
+.ci{display:flex;align-items:center;gap:10px;padding:10px 0;border-bottom:2px dashed var(--lav)}
+.ci span{flex:1;font-weight:700}.ci small{display:block;color:var(--muted);font-weight:400}
+.q{display:flex;align-items:center;gap:8px}.q button{width:28px;height:28px;border-radius:50%;border:0;background:var(--lav);color:var(--ink);font-weight:800;cursor:pointer}
+.tot{font:800 28px "Playfair Display",serif;display:flex;justify-content:space-between;margin:8px 0}
+#drawer input{padding:10px 14px;margin:6px 0}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}.rev{opacity:1;transform:none}.hero h1 .l,.hero p{opacity:1;transform:none}}
+</style>
+</head>
+<body>
+<div id="promo">Сегодня к любому кофе круассан за полцены. А по промокоду <b>ПЕНКА10</b> ещё минус 10% на заказ ☕<button aria-label="Закрыть баннер" onclick="this.parentNode.remove()">×</button></div>
+<header><div class="wrap">
+<a class="logo" href="#top">Пенка</a>
+<nav><a href="#menu">Меню</a><a href="#about">О нас</a><a href="#reviews">Отзывы</a><a href="#book">Столик</a></nav>
+<button class="ib" id="theme" aria-label="Сменить тему">🌙</button>
+<button class="ib" id="cartBtn" aria-label="Открыть заказ">🛍<span id="badge">0</span></button>
+</div></header>
+
+<div class="hero" id="top">
+<div class="blob b1"></div><div class="blob b2"></div><div class="blob b3"></div>
+<div class="wrap">
+<div>
+<h1 id="h1">Кофе, который<br>обнимает <em>утром</em></h1>
+<p>Маленькая кофейня на углу. Обжариваем зёрна раз в неделю, печём круассаны на рассвете и взбиваем самую пышную пенку в районе.</p>
+<a class="btn" href="#menu">Выбрать напиток</a><a class="btn soft" href="#book">Забронировать</a>
+</div>
+<svg class="cup" viewBox="0 0 300 280" aria-hidden="true">
+<g class="steam"><path d="M110 90c-14-20 14-30 0-52"/><path d="M150 85c-14-20 14-30 0-56"/><path d="M190 90c-14-20 14-30 0-52"/></g>
+<ellipse cx="150" cy="250" rx="125" ry="20" fill="var(--lav)"/>
+<path d="M60 105h180v70c0 44-36 76-90 76s-90-32-90-76z" fill="var(--card)" stroke="var(--ink)" stroke-width="5"/>
+<path d="M240 125c42-6 42 60 0 62" fill="none" stroke="var(--ink)" stroke-width="5" stroke-linecap="round"/>
+<ellipse cx="150" cy="108" rx="90" ry="14" fill="var(--peach)" stroke="var(--ink)" stroke-width="5"/>
+<path d="M150 100c-14 4-10 12 0 16 10-4 14-12 0-16z" fill="var(--accent)"/>
+<circle cx="115" cy="175" r="7" fill="var(--ink)"/><circle cx="185" cy="175" r="7" fill="var(--ink)"/>
+<path d="M135 192q15 14 30 0" fill="none" stroke="var(--ink)" stroke-width="5" stroke-linecap="round"/>
+<circle cx="98" cy="190" r="10" fill="var(--pink)" opacity=".8"/><circle cx="202" cy="190" r="10" fill="var(--pink)" opacity=".8"/>
+</svg>
+</div></div>
+
+<div class="marq" aria-hidden="true"><div id="mq"></div></div>
+
+<main class="wrap">
+<section id="menu">
+<h2 class="rev">Меню на сегодня</h2>
+<p class="sub rev">Нажмите на плюс, и напиток окажется в заказе. Оплата на кассе, когда заберёте.</p>
+<div class="tabs rev" id="tabs"></div>
+<div class="menu" id="menuGrid"></div>
+</section>
+
+<section id="about" class="about">
+<div class="rev">
+<h2>Не сеть, а соседи</h2>
+<p style="color:var(--muted)">Мы открылись в 2021 году вдвоём: бариста Лена и кондитер Макс. С тех пор у нас появилась небольшая банда постоянных гостей, которые знают друг друга по именам и заказам.</p>
+<p style="color:var(--muted)">Зёрна берём у двух обжарщиков, молоко у местной фермы, а овсяное и миндальное делаем сами. Приходите с ноутбуком или с книгой, розетки есть у каждого столика.</p>
+</div>
+<div class="stats rev">
+<div class="stat"><b data-n="4">0</b>года работаем</div>
+<div class="stat"><b data-n="32">0</b>вида напитков</div>
+<div class="stat"><b data-n="12">0</b>видов выпечки</div>
+<div class="stat"><b data-n="900">0</b>гостей в неделю</div>
+</div>
+</section>
+
+<section id="reviews">
+<h2 class="rev">Что говорят гости</h2>
+<p class="sub rev">Отзывы сменяются сами, а можно переключить точками ниже.</p>
+<div class="slider rev" id="sl"><q id="rq"></q><div class="who" id="rw"></div></div>
+<div class="dots" id="dots"></div>
+</section>
+
+<section id="book">
+<h2 class="rev">Забронировать столик</h2>
+<p class="sub rev">Держим стол пятнадцать минут после назначенного времени.</p>
+<form id="bf" class="rev" novalidate>
+<div><label for="n">Имя</label><input id="n" autocomplete="name"></div>
+<div><label for="p">Телефон</label><input id="p" type="tel" placeholder="+7 900 000 00 00" autocomplete="tel"></div>
+<div><label for="d">Дата</label><input id="d" type="date"></div>
+<div><label for="t">Время</label><select id="t"></select></div>
+<div class="full"><label for="g">Сколько вас</label><select id="g"><option>1 человек</option><option selected>2 человека</option><option>3 человека</option><option>4 человека</option><option>5 и больше</option></select></div>
+<div class="full err" id="err" role="alert"></div>
+<div class="full"><button class="btn" type="submit" style="width:100%">Забронировать</button></div>
+<div class="full thanks" id="ty"></div>
+</form>
+</section>
+</main>
+
+<footer><div class="wrap">
+<div><div class="logo" style="margin:0 0 6px">Пенка</div><p>Кофейня на углу, с 2021 года</p></div>
+<div><p>Каждый день, 8:00–22:00</p><p>Пятница и суббота до 23:00</p></div>
+<div><p>ул. Липовая, 7</p><p>+7 900 111 22 33</p></div>
+</div></footer>
+
+<div id="veil"></div>
+<aside id="drawer" aria-label="Ваш заказ" aria-hidden="true">
+<div style="display:flex;justify-content:space-between;align-items:center"><h3 style="font-size:28px">Ваш заказ</h3><button class="ib" id="close" aria-label="Закрыть">×</button></div>
+<div id="list"></div>
+<input id="code" placeholder="Промокод" autocomplete="off">
+<div id="cm" class="err" style="min-height:1.4em"></div>
+<div class="tot"><span>Итого</span><span id="tot">0 ₽</span></div>
+<button class="btn" id="go" style="width:100%">Оформить заказ</button>
+<div class="thanks" id="oky" style="margin-top:12px"></div>
+</aside>
+
+<script>
+const $=id=>document.getElementById(id),fmt=n=>n.toLocaleString("ru-RU")+" ₽";
+// заголовок по буквам
+(function(){const h=$("h1");let i=0;const walk=n=>{[...n.childNodes].forEach(c=>{if(c.nodeType===3){const f=document.createDocumentFragment();[...c.textContent].forEach(ch=>{if(ch===" "){f.appendChild(document.createTextNode(" "));return}const s=document.createElement("span");s.className="l";s.textContent=ch;s.style.animationDelay=(i++*45)+"ms";f.appendChild(s)});c.replaceWith(f)}else if(c.nodeName!=="BR")walk(c)})};walk(h)})();
+$("mq").innerHTML=("<span>латте на овсяном</span><span>☕</span><span>свежие круассаны</span><span>🥐</span><span>раф с лавандой</span><span>🌸</span><span>домашний чизкейк</span><span>🍰</span>").repeat(4);
+// тема
+$("theme").onclick=()=>{const d=document.documentElement;const dark=d.dataset.theme?d.dataset.theme==="dark":matchMedia("(prefers-color-scheme:dark)").matches;d.dataset.theme=dark?"light":"dark";$("theme").textContent=dark?"🌙":"☀️"};
+// появление
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add("in");io.unobserve(e.target);e.target.querySelectorAll("[data-n]").forEach(count)}}),{threshold:.15});
+document.querySelectorAll(".rev").forEach(el=>io.observe(el));
+function count(el){const to=+el.dataset.n,t0=performance.now();(function f(t){const k=Math.min(1,(t-t0)/1400);el.textContent=Math.round(to*(1-Math.pow(1-k,3)));if(k<1)requestAnimationFrame(f)})(t0)}
+// меню
+const M=[["Эспрессо","Кофе","Плотный и короткий, с карамельным послевкусием",160,"☕","peach"],["Капучино","Кофе","Нежная пенка и двойной эспрессо",240,"🫖","lav"],["Латте на овсяном","Кофе","Мягкий, чуть ореховый, на нашем домашнем овсяном молоке",290,"🥛","mint"],["Раф лавандовый","Кофе","Сливки, ваниль и щепотка лаванды",320,"🌸","pink"],["Айс-латте","Кофе","Холодный кофе с кубиками льда и молоком",280,"🧊","mint"],["Какао с зефиром","Не кофе","Густое какао и большой зефир сверху",260,"🍫","butter"],["Матча-латте","Не кофе","Японская матча на миндальном молоке",310,"🍵","mint"],["Облепиховый чай","Не кофе","Горячий, с имбирём и мёдом",250,"🍊","butter"],["Круассан","Выпечка","Масляный, хрустящий, из печи в семь утра",190,"🥐","peach"],["Чизкейк","Выпечка","Нью-йоркский, с ягодным соусом",330,"🍰","pink"],["Булочка с корицей","Выпечка","Тёплая, с кремом из сливочного сыра",210,"🍥","lav"],["Сырники","Выпечка","Три штуки со сметаной и вареньем",290,"🥞","butter"]];
+const cats=["Все",...new Set(M.map(m=>m[1]))];let cat="Все";
+$("tabs").innerHTML=cats.map(c=>`<button class="tab${c===cat?" on":""}" data-c="${c}">${c}</button>`).join("");
+$("tabs").onclick=e=>{const c=e.target.dataset.c;if(!c)return;cat=c;document.querySelectorAll(".tab").forEach(b=>b.classList.toggle("on",b.dataset.c===c));draw()};
+function draw(){$("menuGrid").innerHTML=M.map((m,i)=>[m,i]).filter(([m])=>cat==="Все"||m[1]===cat).map(([m,i],k)=>`<div class="item" style="animation-delay:${k*60}ms"><div class="ico" style="background:var(--${m[5]})">${m[4]}</div><h3>${m[0]}</h3><p>${m[2]}</p><div class="row"><span class="price">${fmt(m[3])}</span><button class="add" data-i="${i}" aria-label="Добавить: ${m[0]}">+</button></div></div>`).join("")}
+draw();
+// корзина
+let cart={},promo=false;
+function render(){const ids=Object.keys(cart);let t=0,n=0;
+$("list").innerHTML=ids.length?ids.map(i=>{const m=M[i],q=cart[i];t+=m[3]*q;n+=q;return`<div class="ci"><span>${m[4]} ${m[0]}<small>${fmt(m[3])}</small></span><div class="q"><button data-m="${i}" aria-label="Меньше">−</button><b>${q}</b><button data-p="${i}" aria-label="Больше">+</button></div></div>`}).join(""):'<p style="color:var(--muted);text-align:center;margin-top:40px">Здесь пока пусто. Загляните в меню, там много вкусного.</p>';
+$("tot").textContent=fmt(promo?Math.round(t*.9):t);$("badge").textContent=n;}
+$("menuGrid").onclick=e=>{const i=e.target.dataset.i;if(i===undefined)return;cart[i]=(cart[i]||0)+1;render();const b=$("badge");b.classList.remove("bump");void b.offsetWidth;b.classList.add("bump");$("oky").classList.remove("show")};
+$("list").onclick=e=>{const m=e.target.dataset.m,p=e.target.dataset.p;if(p!==undefined)cart[p]++;if(m!==undefined&&--cart[m]<=0)delete cart[m];render()};
+const open=v=>{$("drawer").classList.toggle("open",v);$("veil").classList.toggle("open",v);$("drawer").setAttribute("aria-hidden",!v)};
+$("cartBtn").onclick=()=>open(true);$("close").onclick=$("veil").onclick=()=>open(false);
+addEventListener("keydown",e=>{if(e.key==="Escape")open(false)});
+$("code").oninput=e=>{const v=e.target.value.trim().toUpperCase(),m=$("cm");promo=v==="ПЕНКА10";m.textContent=!v?"":promo?"Скидка 10% применена":"Такого промокода нет";m.style.color=promo?"#3d9b78":"";render()};
+$("go").onclick=()=>{if(!Object.keys(cart).length){$("oky").textContent="Сначала добавьте что-нибудь из меню";$("oky").classList.add("show");return}
+$("oky").innerHTML="Заказ №"+(100+Math.floor(Math.random()*900))+" принят.<br>Будет готов минут через десять, оплата на кассе.";$("oky").classList.add("show");cart={};render()};
+render();
+// отзывы
+const R=[["Лучший раф в городе, и это не преувеличение. Прихожу сюда каждое утро перед работой.","Аня, график"],["Сырники как у бабушки, а кофе как в хорошей итальянской кофейне. Редкое сочетание.","Дима, программист"],["Тихо, тепло, розетки у каждого стола. Здесь я дописала диплом.","Катя, студентка"],["Привожу сюда друзей из других городов, и все просят адрес.","Игорь, архитектор"]];
+let ri=0,timer;$("dots").innerHTML=R.map((_,i)=>`<button data-r="${i}" aria-label="Отзыв ${i+1}"></button>`).join("");
+function show(i){const s=$("sl");s.classList.add("out");setTimeout(()=>{ri=i;$("rq").textContent=R[i][0];$("rw").textContent=R[i][1];document.querySelectorAll("#dots button").forEach((b,k)=>b.classList.toggle("on",k===i));s.classList.remove("out")},350)}
+const auto=()=>{clearInterval(timer);timer=setInterval(()=>show((ri+1)%R.length),5500)};
+$("dots").onclick=e=>{const r=e.target.dataset.r;if(r===undefined)return;show(+r);auto()};
+$("rq").textContent=R[0][0];$("rw").textContent=R[0][1];document.querySelector("#dots button").classList.add("on");auto();
+// бронь
+$("t").innerHTML=["09:00","10:00","11:00","12:00","13:00","14:00","15:00","16:00","17:00","18:00","19:00","20:00","21:00"].map(x=>`<option>${x}</option>`).join("");
+const dd=new Date();dd.setMinutes(dd.getMinutes()-dd.getTimezoneOffset());$("d").min=dd.toISOString().slice(0,10);
+$("bf").onsubmit=e=>{e.preventDefault();const er=$("err"),n=$("n").value.trim(),p=$("p").value.replace(/\D/g,""),d=$("d").value;
+if(n.length<2){er.textContent="Подскажите, как вас зовут";return}
+if(p.length<10||p.length>12){er.textContent="В телефоне должно быть от 10 до 12 цифр";return}
+if(!d||d<$("d").min){er.textContent="Выберите дату не раньше сегодняшней";return}
+er.textContent="";const f=new Date(d+"T12:00").toLocaleDateString("ru-RU",{day:"numeric",month:"long"});
+const ty=$("ty");ty.textContent=`${n.replace(/[<>&]/g,"")}, ждём вас ${f} в ${$("t").value}. Стол на ${$("g").value} будет готов 💛`;ty.classList.remove("show");void ty.offsetWidth;ty.classList.add("show");e.target.reset()};
+</script>
+</body>
+</html>
